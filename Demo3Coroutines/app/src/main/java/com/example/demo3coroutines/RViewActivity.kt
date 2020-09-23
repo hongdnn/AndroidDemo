@@ -37,15 +37,8 @@ class RViewActivity : AppCompatActivity(), CoroutineScope by CoroutineScope(Disp
                     withContext(Dispatchers.Main) {
                         for (y in 0 until listSize) {
                             recyclerView.findViewHolderForAdapterPosition(y)?.let {
-                                val itemButton: Button = it.itemView?.findViewById(R.id.btnItem)
-                                if ((i % 2 == 0 && itemButton.text.toString()
-                                        .toInt() % 2 == 0) || (i % 2 != 0 && itemButton.text.toString()
-                                        .toInt() % 2 != 0)
-                                ) {
-                                    itemButton.setBackgroundColor(Color.BLUE)
-                                } else {
-                                    itemButton.setBackgroundColor(Color.WHITE)
-                                }
+                                recyclerViewAdapter.changeBackgroundColour(
+                                    recyclerView.findViewHolderForAdapterPosition(y)!!, i)
                             }
                         }
                     }
