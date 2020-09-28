@@ -6,13 +6,34 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f69a0e5-4477-41d8-b924-70d50bc31fde" name="Default Changelist" comment="" />
+    <list default="true" id="4f69a0e5-4477-41d8-b924-70d50bc31fde" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../BitmapProject/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/java/com/example/bitmapproject/ImageListAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/java/com/example/bitmapproject/UtilDiffCallBack.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/res/layout/item_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/app/src/main/java/com/example/bitmapproject/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/java/com/example/bitmapproject/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo1Coroutines/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo1Coroutines/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo1Coroutines/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo1Coroutines/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo1Coroutines/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo1Coroutines/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo1Coroutines/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo1Coroutines/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo1Coroutines/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo1Coroutines/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="22ace873" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -26,7 +47,7 @@
     </system>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1ha9u4GeXmy8f0hkrCslsxOlsgG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -127,10 +148,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1600841690040">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1600851531643">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600841690040" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600851531643" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1600422998955">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

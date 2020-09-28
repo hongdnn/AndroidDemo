@@ -9,13 +9,33 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d37b6db-5327-4408-b568-290f604fde22" name="Default Changelist" comment="" />
+    <list default="true" id="7d37b6db-5327-4408-b568-290f604fde22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../BitmapProject/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/java/com/example/bitmapproject/ImageListAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/java/com/example/bitmapproject/UtilDiffCallBack.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/res/layout/item_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/app/src/main/java/com/example/bitmapproject/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/java/com/example/bitmapproject/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BitmapProject/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BitmapProject/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo2Coroutines/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo2Coroutines/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo2Coroutines/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo2Coroutines/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo2Coroutines/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo2Coroutines/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo2Coroutines/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo2Coroutines/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo2Coroutines/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo2Coroutines/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Demo3Coroutines/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Demo3Coroutines/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="271d7521091c7ece" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -29,7 +49,7 @@
     </system>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1ha0B4CubNGWBOX3KVnEj8hLCsG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -41,7 +61,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Demo4Coroutines" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
