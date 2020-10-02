@@ -10,8 +10,8 @@ class FruitManager {
                 "Cherry",
                 "Price per kg",
                 "https://upload.wikimedia.org/wikipedia/commons/b/bb/Cherry_Stella444.jpg",
-                5.6,
-                7.2,
+                5.6F,
+                7.2F,
                 "Free Ship"
             )
         )
@@ -21,8 +21,8 @@ class FruitManager {
                 "Orange",
                 "Price per kg",
                 "https://www.collinsdictionary.com/images/full/orange_342874121.jpg",
-                6.2,
-                6.8,
+                6.2F,
+                6.8F,
                 null
             )
         )
@@ -32,8 +32,8 @@ class FruitManager {
                 "Banana",
                 "Price per kg",
                 "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1200-80.jpg",
-                3.2,
-                4.6,
+                3.2F,
+                4.6F,
                 null
             )
         )
@@ -43,8 +43,8 @@ class FruitManager {
                 "Apple",
                 "Price per kg",
                 "https://i2.wp.com/ceklog.kindel.com/wp-content/uploads/2013/02/firefox_2018-07-10_07-50-11.png",
-                6.6,
-                7.0,
+                6.6F,
+                7.0F,
                 null
             )
         )
@@ -54,8 +54,8 @@ class FruitManager {
                 "Watermelon",
                 "Price per kg",
                 "https://cdn.mos.cms.futurecdn.net/QCRt2ButzyC6FJi8pb6hNi.jpg",
-                8.0,
-                9.0,
+                8.0F,
+                9.0F,
                 "Free Ship"
             )
         )
@@ -65,8 +65,8 @@ class FruitManager {
                 "Avocado",
                 "Price per kg",
                 "https://www.washingtonian.com/wp-content/uploads/2020/02/iStock-1027572462-scaled-2048x1695.jpg",
-                5.0,
-                6.0,
+                5.0F,
+                6.0F,
                 "Sale 12%"
             )
         )
@@ -76,8 +76,8 @@ class FruitManager {
                 "Lemon",
                 "Price per kg",
                 "https://i.ndtvimg.com/mt/cooks/2014-11/lemon.jpg",
-                3.3,
-                4.2,
+                3.3F,
+                4.2F,
                 null
             )
         )
@@ -87,8 +87,8 @@ class FruitManager {
                 "Tangerine",
                 "Price per kg",
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-c78c6mNDcNwHsO3uRknoWPAVehIlUmqqmg&usqp=CAU",
-                2.3,
-                3.6,
+                2.3F,
+                3.6F,
                 "Sale 20%"
             )
         )

@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppThemeRatingBar" parent="Theme.AppCompat">
+        <item name="colorAccent">#FDDE17</item>
+        <item name="android:colorControlNormal">#f9a825</item>
+    </style>
+
 </resources>

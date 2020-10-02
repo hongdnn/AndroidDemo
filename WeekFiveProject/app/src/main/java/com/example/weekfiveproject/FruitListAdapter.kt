@@ -1,8 +1,6 @@
 package com.example.weekfiveproject
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
+import android.graphics.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +18,6 @@ import java.util.concurrent.Executors
 
 class FruitListAdapter(
     reqWidth: Int,
-    private val onFavClick: (Int) -> Unit,
     private val onItemClick: (Int) -> Unit
 ) : androidx.recyclerview.widget.ListAdapter<Fruit, FruitListAdapter.ViewHolder>(
     AsyncDifferConfig.Builder(UtilDiffCallBack())
@@ -43,10 +40,13 @@ class FruitListAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(fruit: Fruit) {
             itemView.ivItem.setOnClickListener {
-                onItemClick(position)
+                onItemClick(adapterPosition)
             }
             itemView.tvTitle.setOnClickListener {
-                onItemClick(position)
+                onItemClick(adapterPosition)
+            }
+            itemView.imgBtnFavourite.setOnClickListener {
+                itemView.imgBtnFavourite.setColorFilter(Color.parseColor("#fa0206"))
             }
             GlobalScope.launch(Dispatchers.IO) {
                 val imgBitmap = resizeBitmap(fruit.image)
@@ -63,12 +63,14 @@ class FruitListAdapter(
                 itemView.tvSale.visibility = View.VISIBLE
                 itemView.tvSale.text = it
                 if (it == "Free Ship") {
-                    itemView.tvSale.setBackgroundColor(Color.parseColor("#0280d0"))
+                    itemView.tvSale.background.setTint(Color.parseColor("#0280d0"))
                 } else {
-                    itemView.tvSale.setBackgroundColor(Color.parseColor("#f86208"))
+                    itemView.tvSale.background.setTint(Color.parseColor("#f86208"))
                 }
             }
             itemView.tvCurPrice.text = "$${fruit.currentPrice}"
+            itemView.tvInitPrice.paintFlags =
+                itemView.tvInitPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             itemView.tvInitPrice.text = "$${fruit.initialPrice}"
 
 
