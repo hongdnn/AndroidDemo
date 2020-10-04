@@ -4,11 +4,12 @@ import java.io.Serializable
 
 
 data class Fruit(
-    val id: Int,
-    val title: String,
-    val description: String,
-    val image: String,
-    val currentPrice: Float,
-    val initialPrice: Float,
-    val sale: String?
-) :Serializable
+    var id: Int,
+    var title: String,
+    var description: String,
+    var image: String,
+    var currentPrice: Float,
+    var initialPrice: Float,
+    var sale: String?,
+    var isFavourite: Boolean
+) : Serializable

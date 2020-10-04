@@ -72,7 +72,20 @@ class FruitListAdapter(
             itemView.tvInitPrice.paintFlags =
                 itemView.tvInitPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             itemView.tvInitPrice.text = "$${fruit.initialPrice}"
-
+            if (!fruit.isFavourite) {
+                itemView.imgBtnFavourite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+            } else {
+                itemView.imgBtnFavourite.setImageResource(R.drawable.ic_baseline_favorite_pink_24)
+            }
+            itemView.imgBtnFavourite.setOnClickListener {
+                if (fruit.isFavourite) {
+                    fruit.isFavourite = false
+                    itemView.imgBtnFavourite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                }else{
+                    fruit.isFavourite = true
+                    itemView.imgBtnFavourite.setImageResource(R.drawable.ic_baseline_favorite_pink_24)
+                }
+            }
 
         }
     }

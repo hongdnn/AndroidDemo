@@ -16,10 +16,10 @@
             android:layout_height="35dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
+            android:contentDescription="@string/back_image"
             android:src="@drawable/ic_baseline_arrow_back_ios_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/back_image" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,16 +45,38 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivBack">
 
-            <ImageView
-                android:id="@+id/activity_item_ivItem"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="match_parent"
                 android:layout_height="250dp"
+                android:background="@drawable/radius_pink"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvFruit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:elevation="5dp"
+                android:translationZ="5dp"
+                app:cardCornerRadius="180dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/image" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/activity_item_ivItem"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:contentDescription="@string/image"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/activity_item_tvSale"
@@ -65,12 +87,12 @@
                 android:background="@drawable/sale_shape"
                 android:backgroundTint="@color/colorSale"
                 android:padding="10dp"
-                tools:text="TextView"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:visibility="visible"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/activity_item_tvTitle"
@@ -80,20 +102,20 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="150dp"
                 android:layout_marginBottom="30dp"
-                tools:text="TextView"
-                android:textStyle="bold"
                 android:textSize="35sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/activity_item_ivItem" />
+                app:layout_constraintTop_toBottomOf="@id/cvFruit"
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/tvRatingNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
-                tools:text="3,5"
+                android:layout_marginStart="50dp"
+                android:text="3,5"
                 android:textSize="16sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_item_tvTitle" />
@@ -107,9 +129,9 @@
                 android:layout_marginTop="3dp"
                 android:isIndicator="true"
                 android:numStars="5"
-                android:theme="@style/AppThemeRatingBar"
                 android:rating="3.5"
                 android:stepSize="0.5"
+                android:theme="@style/AppThemeRatingBar"
                 app:layout_constraintLeft_toRightOf="@id/tvRatingNumber"
                 app:layout_constraintTop_toBottomOf="@+id/activity_item_tvTitle" />
 
@@ -118,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                tools:text="(72)"
+                android:text="(72)"
                 android:textSize="16sp"
                 app:layout_constraintLeft_toRightOf="@id/rating"
                 app:layout_constraintTop_toBottomOf="@+id/activity_item_tvTitle" />
@@ -129,10 +151,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:text="@string/description"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardView" />
 
@@ -141,31 +163,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            tools:text="@string/description"
+            android:layout_marginTop="20dp"
             android:textSize="25sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDes" />
+            app:layout_constraintTop_toBottomOf="@id/tvDes"
+            tools:text="@string/description" />
 
         <TextView
             android:id="@+id/tvQuantityTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/quantity"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_item_tvDescription"
-            tools:layout_editor_absoluteY="414dp" />
+            app:layout_constraintTop_toBottomOf="@id/activity_item_tvDescription" />
 
         <LinearLayout
             android:id="@+id/cvQuantity"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/sale_shape"
             android:backgroundTint="@android:color/white"
             android:elevation="10dp"
@@ -208,67 +229,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/title"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cvQuantity"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="555dp" />
 
-        <TextView
-            android:id="@+id/tvTypeA"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvFruitTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:background="@drawable/sale_shape"
-            android:backgroundTint="@color/colorSale"
-            android:elevation="10dp"
-            android:gravity="center"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:text="@string/typeA"
-            android:textSize="25sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/tvTypeB"
-            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfItem" />
-
-        <TextView
-            android:id="@+id/tvTypeB"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/sale_shape"
-            android:backgroundTint="@android:color/white"
-            android:elevation="10dp"
-            android:gravity="center"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:text="@string/typeB"
-            android:textSize="25sp"
-            app:layout_constraintLeft_toRightOf="@+id/tvTypeA"
-            app:layout_constraintRight_toLeftOf="@+id/tvTypeC"
-            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfItem" />
-
-        <TextView
-            android:id="@+id/tvTypeC"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/sale_shape"
-            android:backgroundTint="@android:color/white"
-            android:elevation="10dp"
-            android:gravity="center"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:text="@string/typeC"
-            android:textSize="25sp"
-            app:layout_constraintLeft_toRightOf="@+id/tvTypeB"
-            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfItem" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reverseLayout="false"
+            tools:listitem="@layout/fruit_title_item"
+            app:layout_constraintTop_toBottomOf="@id/tvTypeOfItem"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cvConfirm"
@@ -284,7 +265,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTypeB">
+            app:layout_constraintTop_toBottomOf="@+id/rcvFruitTitle">
 
             <Button
                 android:id="@+id/btnConfirm"
@@ -297,12 +278,12 @@
                 android:drawablePadding="10dp"
                 android:gravity="start"
                 android:padding="20dp"
-                tools:text="7.99$"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/tvConfirm" />
+                app:layout_constraintRight_toLeftOf="@+id/tvConfirm"
+                tools:text="7.99$" />
 
             <TextView
                 android:id="@+id/tvConfirm"
@@ -325,13 +306,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/oval_shape"
+                android:contentDescription="@string/shopping_icon"
                 android:padding="7dp"
                 android:src="@drawable/ic_shopping_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/tvConfirm"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/shopping_icon" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
