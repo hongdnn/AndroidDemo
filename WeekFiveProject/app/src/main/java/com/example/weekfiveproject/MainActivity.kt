@@ -9,6 +9,7 @@ import android.view.WindowInsets
 import android.view.WindowMetrics
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -47,16 +48,17 @@ class MainActivity : AppCompatActivity() {
     fun navigateToItemActivity(position: Int) {
         val intent = Intent(this, ItemActivity::class.java)
         val fruit = fruitManager.fruitList[position]
-        val bundle = Bundle()
-        bundle.putInt("id", fruit.id)
-        bundle.putString("title", fruit.title)
-        bundle.putString("description", fruit.description)
-        bundle.putString("image", fruit.image)
-        bundle.putString("sale", fruit.sale)
-        bundle.putFloat("currentPrice", fruit.currentPrice)
-        bundle.putFloat("initialPrice", fruit.initialPrice)
-
-        intent.putExtras(bundle)
+//        val bundle = Bundle()
+//        bundle.putInt("id", fruit.id)
+//        bundle.putString("title", fruit.title)
+//        bundle.putString("description", fruit.description)
+//        bundle.putString("image", fruit.image)
+//        bundle.putString("sale", fruit.sale)
+//        bundle.putFloat("currentPrice", fruit.currentPrice)
+//        bundle.putFloat("initialPrice", fruit.initialPrice)
+        val json = Gson().toJson(fruit)
+        intent.putExtra("fruit", json)
+        //intent.putExtras(bundle)
         startActivity(intent)
     }
 

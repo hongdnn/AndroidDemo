@@ -8,6 +8,7 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_item.*
 import kotlinx.android.synthetic.main.activity_item.view.*
 import kotlinx.android.synthetic.main.menu_item.*
@@ -21,27 +22,31 @@ class ItemActivity : AppCompatActivity() {
         setContentView(R.layout.activity_item)
 
         fruitManager = FruitManager()
-        val fruitTitleAdapter = FruitTitleAdapter(onItemTitleClick).apply {
-            submitList(fruitManager.fruitList)
-        }
-        rcvFruitTitle.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = fruitTitleAdapter
-        }
 
         intent?.let {
-            val bundle = intent.extras
-            bundle
+//            val bundle = intent.extras
+//            bundle
+            val json = intent.getStringExtra("fruit")
+            val fruit = Gson().fromJson(json, Fruit::class.java)
+            fruit
         }?.let {
             Glide.with(this)
-                .load(it.getString("image"))
+                .load(it.image)
                 .into(activity_item_ivItem)
-            activity_item_tvSale.text = it.getString("title")
-            activity_item_tvTitle.text = it.getString("title")
-            activity_item_tvDescription.text = it.getString("description")
-            currentPrice = it.getFloat("currentPrice")
+            activity_item_tvSale.text = it.title
+            activity_item_tvTitle.text = it.title
+            activity_item_tvDescription.text = it.description
+            currentPrice = it.currentPrice
             btnConfirm.text = "$currentPrice$"
 
+            val fruitTitleAdapter = FruitTitleAdapter(it.id-1,onItemTitleClick).apply {
+                submitList(fruitManager.fruitList)
+            }
+            rcvFruitTitle.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = fruitTitleAdapter
+                scrollToPosition(it.id-1)
+            }
         }
 
         ivBack.setOnClickListener {

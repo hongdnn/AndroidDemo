@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fruit_title_item.view.*
 
-class FruitTitleAdapter(private val onItemClick: (Int) -> Unit) :
+class FruitTitleAdapter(selected: Int, private val onItemClick: (Int) -> Unit) :
     ListAdapter<Fruit, FruitTitleAdapter.FruitTitleVH>(UtilDiffCallBack()) {
-    private var selectedPosition = 0
+    private var selectedPosition = selected
 
     inner class FruitTitleVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(fruit: Fruit) {
