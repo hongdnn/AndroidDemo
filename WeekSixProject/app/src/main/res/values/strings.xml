@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WeekSixProject</string>
+    <string name="add">Add</string>
+    <string name="add_movie">Add Movie</string>
+    <string name="show">Show</string>
+    <string name="movie_category">Movie Category</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="key_word">Input Keyword</string>
+    <string name="select">Select</string>
+    <string name="finish">Finish</string>
+    <string name="search">Search</string>
+    <string name="result">Result</string>
+</resources>
