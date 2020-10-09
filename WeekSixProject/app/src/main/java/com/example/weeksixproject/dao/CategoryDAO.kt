@@ -13,4 +13,6 @@ interface CategoryDAO {
     @Insert
     suspend fun insert(category: Category)
 
+    @Query("SELECT * from category WHERE categoryName = :searchCategory")
+     fun searchCategory(searchCategory: String): Category
 }

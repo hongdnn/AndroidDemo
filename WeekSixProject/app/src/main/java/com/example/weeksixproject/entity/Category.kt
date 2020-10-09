@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "category")
 
-class Category(
-    @PrimaryKey @ColumnInfo(name = "categoryName") val categoryName: String
+data class Category(
+    @PrimaryKey(autoGenerate = true) val categoryId: Int = 0,
+    @ColumnInfo(name = "categoryName") val categoryName: String
 
 )

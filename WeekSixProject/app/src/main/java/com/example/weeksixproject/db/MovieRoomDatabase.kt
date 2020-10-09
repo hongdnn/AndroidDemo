@@ -10,7 +10,7 @@ import com.example.weeksixproject.entity.Category
 import com.example.weeksixproject.entity.Movie
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = [Movie::class, Category::class], version = 1)
+@Database(entities = [Movie::class, Category::class], version = 1,exportSchema = false)
 public abstract class MovieRoomDatabase : RoomDatabase() {
 
     abstract fun movieDAO(): MovieDAO
@@ -20,10 +20,7 @@ public abstract class MovieRoomDatabase : RoomDatabase() {
         @Volatile
         private var movieRoomDatabase: MovieRoomDatabase? = null
 
-        fun getDatabase(
-            context: Context,
-            scope: CoroutineScope
-        ): MovieRoomDatabase {
+        fun getDatabase(context: Context): MovieRoomDatabase {
             val tempInstance = movieRoomDatabase
             if (tempInstance != null) {
                 return tempInstance

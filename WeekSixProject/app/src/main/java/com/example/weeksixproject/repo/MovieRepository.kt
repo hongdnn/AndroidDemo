@@ -1,6 +1,5 @@
 package com.example.weeksixproject.repo
 
-import android.database.sqlite.SQLiteConstraintException
 import androidx.lifecycle.LiveData
 import com.example.weeksixproject.dao.CategoryDAO
 import com.example.weeksixproject.dao.MovieDAO
@@ -9,11 +8,18 @@ import com.example.weeksixproject.entity.Movie
 
 class MovieRepository(private val movieDAO: MovieDAO, private val categoryDAO: CategoryDAO) {
 
-    val allMovies: LiveData<List<Movie>> = movieDAO.getAllMovies()
     val allCategories: LiveData<List<Category>> = categoryDAO.getAllCategories()
 
-    fun searchResult(searchName: String, searchCategory: String) {
-        movieDAO.getAllResults(searchName, searchCategory)
+    fun allMovies(): LiveData<List<Movie>> {
+        return movieDAO.getAllMovies()
+    }
+
+    fun searchResult(searchName: String, searchCategory: String): LiveData<List<Movie>> {
+        return movieDAO.getAllResults(searchName, searchCategory)
+    }
+
+    fun searchMoviesByCategory(searchCategory: String): LiveData<List<Movie>> {
+        return movieDAO.getMoviesByCategory(searchCategory)
     }
 
     suspend fun insertMovie(movie: Movie) {
@@ -21,11 +27,10 @@ class MovieRepository(private val movieDAO: MovieDAO, private val categoryDAO: C
     }
 
     suspend fun insertCategory(category: Category): Boolean {
-        return try {
+        if (categoryDAO.searchCategory(category.categoryName) == null ) {
             categoryDAO.insert(category)
-            true
-        }catch (e: SQLiteConstraintException){
-            false
+            return true
         }
+        return false
     }
 }

@@ -16,15 +16,21 @@
         android:text="@string/select"
         android:textSize="25sp" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/category_edit_shape">
     <Spinner
         android:id="@+id/activityThirdSpnCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/category_edit_shape"
-        tools:listitem="@layout/support_simple_spinner_dropdown_item" />
+        tools:listitem="@layout/spinner_item"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/edtMovieName"

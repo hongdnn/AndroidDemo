@@ -10,4 +10,10 @@
     <string name="finish">Finish</string>
     <string name="search">Search</string>
     <string name="result">Result</string>
+    <string name="movie_categories">Movie Categories</string>
+    <string name="missing_category">Please select category</string>
+    <string name="no_result">No result found</string>
+    <string name="please_input_category">Please input category</string>
+    <string name="please_input_movie_name">Please input movie name</string>
+    <string name="add_success">Add success</string>
 </resources>
