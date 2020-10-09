@@ -17,4 +17,5 @@
     <string name="shopping_icon">Shopping Icon</string>
     <string name="favorite_image">Favorite Image</string>
     <string name="add_to_cart">Add to cart</string>
+    <string name="currency">$</string>
 </resources>

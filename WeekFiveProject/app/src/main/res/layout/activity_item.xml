@@ -45,14 +45,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivBack">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@drawable/radius_pink"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvFruit"
                 android:layout_width="wrap_content"
@@ -71,12 +63,22 @@
                     android:id="@+id/activity_item_ivItem"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
+                    android:padding="16dp"
                     android:contentDescription="@string/image"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:scaleType="centerInside"
                     tools:src="@drawable/cherry" />
             </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/radius_pink"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/activity_item_tvSale"

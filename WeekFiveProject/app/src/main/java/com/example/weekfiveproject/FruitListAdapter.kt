@@ -49,11 +49,12 @@ class FruitListAdapter(
                 itemView.imgBtnFavourite.setColorFilter(Color.parseColor("#fa0206"))
             }
             GlobalScope.launch(Dispatchers.IO) {
-                val imgBitmap = resizeBitmap(fruit.image)
+                //val imgBitmap = resizeBitmap(fruit.image)
                 withContext(Dispatchers.Main) {
                     Glide.with(itemView.context)
-                        .asBitmap()
-                        .load(imgBitmap)
+                        //.asBitmap()
+                        .load(fruit.image)
+                        .override(reqWidth)
                         .into(itemView.ivItem)
                 }
             }

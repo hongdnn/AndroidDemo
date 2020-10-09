@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         fruitManager = FruitManager()
         println("w: $width")
         width = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -45,20 +44,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun navigateToItemActivity(position: Int) {
+    private fun navigateToItemActivity(position: Int) {
         val intent = Intent(this, ItemActivity::class.java)
         val fruit = fruitManager.fruitList[position]
-//        val bundle = Bundle()
-//        bundle.putInt("id", fruit.id)
-//        bundle.putString("title", fruit.title)
-//        bundle.putString("description", fruit.description)
-//        bundle.putString("image", fruit.image)
-//        bundle.putString("sale", fruit.sale)
-//        bundle.putFloat("currentPrice", fruit.currentPrice)
-//        bundle.putFloat("initialPrice", fruit.initialPrice)
         val json = Gson().toJson(fruit)
         intent.putExtra("fruit", json)
-        //intent.putExtras(bundle)
         startActivity(intent)
     }
 
