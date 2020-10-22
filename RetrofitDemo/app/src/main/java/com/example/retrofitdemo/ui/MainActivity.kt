@@ -12,30 +12,26 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
     private val questionViewModel: QuestionViewModel by viewModel()
     private lateinit var mAdapter: ListAdapter
-    private var mQuestions: MutableList<Question> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        fetchQuestions()
 
-        setupRecyclerView(mQuestions)
-        fetchQuetionList()
     }
 
-    private fun fetchQuetionList() {
+    private fun fetchQuestions() {
         questionViewModel.fetchQuestion("android")
         questionViewModel.questions.observe(this, {
-            println("Size: ${it.size}")
-            it.let { mQuestions.addAll(it) }
-            //setupRecyclerView(it)
-            mAdapter.notifyDataSetChanged()
+            setupRecyclerView(it)
         })
     }
 
-    private fun setupRecyclerView(questionlist: List<Question>){
+    private fun setupRecyclerView(questions: List<Question>){
         listRecyclerView.layoutManager = LinearLayoutManager(this)
-        mAdapter = ListAdapter(questionlist)
+        mAdapter = ListAdapter(questions)
         listRecyclerView.adapter = mAdapter
+
     }
 
 }

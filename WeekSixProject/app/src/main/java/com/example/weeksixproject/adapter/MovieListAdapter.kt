@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_result.view.*
 import java.util.concurrent.Executors
 
 
-class MovieListAdapter() : androidx.recyclerview.widget.ListAdapter<Movie, MovieListAdapter.ViewHolder>(
+class MovieListAdapter : androidx.recyclerview.widget.ListAdapter<Movie, MovieListAdapter.ViewHolder>(
     AsyncDifferConfig.Builder(UtilDiffCallBack())
         .setBackgroundThreadExecutor(Executors.newSingleThreadExecutor())
         .build()
