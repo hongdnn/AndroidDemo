@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             if (edtPhone.text != null && edtPhone.text.toString().trim() != "")
                 mCallback?.let { callback ->
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                        edtPhone.text.toString(),                     // Phone number to verify
+                        "+84${edtPhone.text.toString()}",                     // Phone number to verify
                         timeOut.toLong(),                           // Timeout duration
                         TimeUnit.SECONDS,                // Unit of timeout
                         this@MainActivity,        // Activity (for callback binding)
