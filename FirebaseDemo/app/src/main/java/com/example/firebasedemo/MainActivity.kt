@@ -2,33 +2,28 @@ package com.example.firebasedemo
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.*
-import java.text.DecimalFormat
 import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
     private val timeOut = 60
-
-
-    private lateinit var auth: FirebaseAuth
-    var job: Deferred<Unit>? = null
-
     private var mCallback: OnVerificationStateChangedCallbacks? = null
-    var verificationCode: String = ""
 
     private fun Activity.hideKeyboard() = hideKeyboard(currentFocus ?: View(this))
 
@@ -43,11 +38,9 @@ class MainActivity : AppCompatActivity() {
 
         startFirebaseLogin()
 
-        //setPhoneNumber()
-
         btnRequest.setOnClickListener {
             //TODO send OTP to the selected phone number
-            if (edtPhone.text != null && edtPhone.text.toString().trim() != "")
+            if (edtPhone.text != null && edtPhone.text.toString().trim() != "") {
                 mCallback?.let { callback ->
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+84${edtPhone.text.toString()}",                     // Phone number to verify
@@ -57,7 +50,8 @@ class MainActivity : AppCompatActivity() {
                         callback
                     )
                 }
-            else {
+                startActivity(Intent(this, VerifyOTPActivity::class.java))
+            } else {
                 hideKeyboard()
                 Toast
                     .makeText(
@@ -69,74 +63,17 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        btnVerify.setOnClickListener {
-            hideKeyboard()
-            if (edtOTP.text.toString().trim() != "") {
-                val credential =
-                    PhoneAuthProvider.getCredential(verificationCode, edtOTP.text.toString())
-                signInWithPhone(credential)
-            } else {
-                Toast
-                    .makeText(
-                        this@MainActivity,
-                        "Please type OTP number",
-                        Toast.LENGTH_SHORT
-                    )
-                    .show()
-            }
-        }
-
-        logout.setOnClickListener {
-            if (job != null && job!!.isActive)
-                job!!.cancel()
-            FirebaseAuth.getInstance().signOut()
-            setPhoneNumber()
-        }
-    }
-
-
-    private fun countDown() = GlobalScope.async(Dispatchers.IO) {
-        hideKeyboard()
-
-        repeat(timeOut + 1) {
-            val res = DecimalFormat("00").format(timeOut - it)
-            withContext(Dispatchers.Main) {
-                tvCountDown.text = "00:$res"
-            }
-            delay(1000)
-        }
-        println("finished")
 
     }
 
-    private fun signInWithPhone(credential: PhoneAuthCredential) {
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this@MainActivity, "Correct OTP", Toast.LENGTH_SHORT)
-                        .show()
-                    if (job!!.isActive)
-                        job!!.cancel()
-                    setPhoneNumber()
-                } else {
-                    Toast.makeText(this@MainActivity, "Incorrect OTP", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-    }
-
-    private fun setPhoneNumber() {
-        val user = auth.currentUser
-        try {
-            tvUserPhone.text = user?.phoneNumber
-        } catch (e: Exception) {
-            Toast.makeText(this, "Phone number not found", Toast.LENGTH_SHORT).show()
-            tvUserPhone.text = "---"
-        }
-    }
 
     private fun startFirebaseLogin() {
-        auth = FirebaseAuth.getInstance()
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestEmail()
+//            .build()
+//
+//        val mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+
         mCallback = object : OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
                 Toast.makeText(this@MainActivity, "verification completed", Toast.LENGTH_SHORT)
@@ -149,21 +86,20 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCodeSent(
-                s: String,
+                verificationId: String,
                 forceResendingToken: ForceResendingToken
             ) {
-                super.onCodeSent(s, forceResendingToken)
-                verificationCode = s
-                Log.d("verificationCode", verificationCode)
-                Toast.makeText(this@MainActivity, "Code Sent", Toast.LENGTH_SHORT).show()
-                job = if (job == null || job!!.isCancelled)
-                    countDown()
-                else {
-                    job!!.cancel()
-                    countDown()
+                super.onCodeSent(verificationId, forceResendingToken)
+                Log.d("verificationCode", verificationId)
+                val sharedPreferences = getSharedPreferences("OTP",Context.MODE_PRIVATE)
+                with(sharedPreferences.edit()){
+                    putString("verificationCode",verificationId)
+                    apply()
                 }
+                Toast.makeText(this@MainActivity, "Code Sent", Toast.LENGTH_SHORT).show()
 
             }
         }
     }
+
 }
