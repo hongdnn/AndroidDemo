@@ -29,6 +29,7 @@ class VerifyOTPActivity : AppCompatActivity() {
             hideKeyboard()
             val sharedPref = getSharedPreferences("OTP",Context.MODE_PRIVATE)
             val verificationCode = sharedPref.getString("verificationCode", null)
+            println("Ve: $verificationCode")
             if (verificationCode != null) {
                 if (edtOTP.text.toString().trim() != "") {
                     val credential =

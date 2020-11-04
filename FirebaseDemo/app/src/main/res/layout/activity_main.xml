@@ -2,21 +2,41 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.hbb20.CountryCodePicker
+        android:id="@+id/cppCode"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/radius_view"
+        app:ccp_defaultNameCode="US"
+        app:ccp_rememberLastSelection="true"
+        app:ccp_showNameCode="false"
+        app:ccp_textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
         android:hint="@string/mobile_number"
         app:errorEnabled="true"
         app:helperText="type your number"
         app:helperTextEnabled="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/cppCode"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtPhone"
@@ -24,7 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:inputType="number"
-            android:maxLength="11" />
+            android:maxLength="11"
+            android:textSize="28sp"
+            tools:text="0123456789" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -36,16 +58,17 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-
-<!--    <androidx.constraintlayout.widget.Barrier-->
-<!--        android:id="@+id/barrier"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:barrierDirection="top"-->
-<!--        tools:layout_editor_absoluteX="411dp"-->
-<!--        tools:layout_editor_absoluteY="731dp" />-->
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRequest" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
