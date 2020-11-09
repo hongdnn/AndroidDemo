@@ -71,4 +71,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRequest" />
 
+
+    <com.facebook.login.widget.LoginButton
+        xmlns:facebook="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/btnFBLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        facebook:com_facebook_login_text="Sign in with Facebook"
+        facebook:com_facebook_logout_text="Sign in with Facebook"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+
+    <include
+        android:id="@+id/layoutProgressBar"
+        android:visibility="gone"
+        layout="@layout/layout_progress_bar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

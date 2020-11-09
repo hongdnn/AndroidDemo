@@ -10,21 +10,21 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.facebook.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.concurrent.TimeUnit
+import com.facebook.login.LoginResult
 
 const val RC_SIGN_IN = 123
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private val timeOut = 60
-    private var phone = "+"
+
+
     private fun Activity.hideKeyboard() = hideKeyboard(currentFocus ?: View(this))
+    private lateinit var callbackManager: CallbackManager
 
     private fun Context.hideKeyboard(view: View) =
         (getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -44,6 +44,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnRequest.setOnClickListener {
             onClick(btnRequest)
         }
+
+        btnFBLogin.setOnClickListener {
+            onClick(btnFBLogin)
+        }
+
+        signInByFacebook()
     }
 
     override fun onClick(v: View) {
@@ -55,17 +61,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun signInByPhone() {
         if (edtPhone.text != null && edtPhone.text.toString().trim() != "") {
-            FirebaseLogin.mCallback?.let { callback ->
-                phone += cppCode.selectedCountryCode + edtPhone.text
-                val options = PhoneAuthOptions.newBuilder(FirebaseLogin.auth)
-                    .setPhoneNumber(phone)
-                    .setTimeout(timeOut.toLong(),TimeUnit.SECONDS)
-                    .setActivity(this)
-                    .setCallbacks(callback)
-                    .build()
-                PhoneAuthProvider.verifyPhoneNumber(options)
-            }
-            startActivity(Intent(this, VerifyOTPActivity::class.java))
+            val intent = Intent(this, VerifyOTPActivity::class.java)
+            intent.putExtra("phoneNum",edtPhone.text.toString())
+            intent.putExtra("phoneCode",cppCode.selectedCountryCode)
+            startActivity(intent)
         } else {
             hideKeyboard()
             Toast
@@ -86,27 +85,52 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
-                Log.d("AuthWithGoogle", "firebaseAuthWithGoogle:" + account?.id)
                 account?.idToken?.let {
+
                     FirebaseLogin.firebaseAuthWithGoogle(this@MainActivity, it)
-                    FirebaseLogin.checkLogin.observe(this@MainActivity, { check ->
-                        if (check) {
-                            val intent = Intent(this@MainActivity, HomeActivity::class.java)
-                            startActivity(intent)
-                        }
-                    })
                 }
             } catch (e: ApiException) {
-                Log.w("SignInFailed", "Google sign in failed", e)
+                layoutProgressBar.visibility = View.GONE
                 Snackbar.make(activity_main, "Sign in Failed.", Snackbar.LENGTH_SHORT).show()
             }
         }
+
+        FirebaseLogin.checkLogin.observe(this@MainActivity, { check ->
+            if (check) {
+                layoutProgressBar.visibility = View.VISIBLE
+                val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                startActivity(intent)
+            }
+        })
     }
 
+    private fun signInByFacebook() {
+        callbackManager = CallbackManager.Factory.create()
+
+        btnFBLogin.setReadPermissions("email", "public_profile")
+        btnFBLogin.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                FirebaseLogin.handleFacebookAccessToken(this@MainActivity, loginResult.accessToken)
+                layoutProgressBar.visibility = View.VISIBLE
+            }
+
+            override fun onCancel() {
+                Log.d("Login failed", "facebook:onCancel")
+                layoutProgressBar.visibility = View.GONE
+            }
+
+            override fun onError(error: FacebookException) {
+                Log.d("Login exception", "facebook:onError", error)
+                layoutProgressBar.visibility = View.GONE
+            }
+        })
+    }
 
 }

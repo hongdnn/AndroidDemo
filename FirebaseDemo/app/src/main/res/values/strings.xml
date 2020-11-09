@@ -3,4 +3,6 @@
     <string name="logout">logout</string>
     <string name="mobile_number">mobile number</string>
     <string name="request_otp">Request OTP</string>
+    <string name="facebook_app_id">364041977998199</string> <string name="fb_login_protocol_scheme">fb364041977998199</string>
+
 </resources>

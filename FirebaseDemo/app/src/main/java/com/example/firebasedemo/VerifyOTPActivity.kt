@@ -10,12 +10,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.activity_verify_otp.*
+import java.util.concurrent.TimeUnit
 
 class VerifyOTPActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private fun Activity.hideKeyboard() = hideKeyboard(currentFocus ?: View(this))
+    private var phone = "+"
+    private val timeOut = 60
 
     private fun Context.hideKeyboard(view: View) =
         (getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -24,6 +28,13 @@ class VerifyOTPActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify_otp)
+        val phoneNum = intent.getStringExtra("phoneNum")
+        val phoneCode = intent.getStringExtra("phoneCode")
+        phoneNum?.let{
+            if (phoneCode != null) {
+                requestOTP(phoneNum, phoneCode)
+            }
+        }
 
         btnVerify.setOnClickListener {
             hideKeyboard()
@@ -61,5 +72,19 @@ class VerifyOTPActivity : AppCompatActivity() {
                         .show()
                 }
             }
+    }
+
+    private fun requestOTP(phoneNum: String,phoneCode: String){
+        FirebaseLogin.startRequestOTP(this)
+        FirebaseLogin.mCallback?.let { callback ->
+            phone += phoneCode + phoneNum
+            val options = PhoneAuthOptions.newBuilder(FirebaseLogin.auth)
+                .setPhoneNumber(phone)
+                .setTimeout(timeOut.toLong(), TimeUnit.SECONDS)
+                .setActivity(this)
+                .setCallbacks(callback)
+                .build()
+            PhoneAuthProvider.verifyPhoneNumber(options)
+        }
     }
 }

@@ -5,14 +5,12 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.facebook.AccessToken
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -33,14 +31,32 @@ class FirebaseLogin : Application() {
                 .build()
 
             mGoogleSignInClient = GoogleSignIn.getClient(activity, gso)
+        }
 
+         fun firebaseAuthWithGoogle(activity: Activity,idToken: String) {
+            val credential = GoogleAuthProvider.getCredential(idToken, null)
+            auth.signInWithCredential(credential)
+                .addOnCompleteListener(activity) { task ->
+                    checkLogin.value = task.isSuccessful
+                }
+        }
+
+        fun handleFacebookAccessToken(activity: Activity,token: AccessToken) {
+
+            val credential = FacebookAuthProvider.getCredential(token.token)
+            auth.signInWithCredential(credential)
+                .addOnCompleteListener(activity) { task ->
+                    checkLogin.value = task.isSuccessful
+                }
+        }
+
+        fun startRequestOTP(activity: Activity){
             mCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
                     println("completed")
                 }
 
                 override fun onVerificationFailed(e: FirebaseException) {
-                    Log.d("failed", "failed")
                     println("failed")
                 }
 
@@ -56,18 +72,8 @@ class FirebaseLogin : Application() {
                         putString("verificationCode", verificationId)
                         apply()
                     }
-                    println("Code: ${activity.getSharedPreferences("OTP",Context.MODE_PRIVATE).getString("verificationCode",null)}")
-                    println("Token: $forceResendingToken")
                 }
             }
-        }
-
-         fun firebaseAuthWithGoogle(activity: Activity,idToken: String) {
-            val credential = GoogleAuthProvider.getCredential(idToken, null)
-            auth.signInWithCredential(credential)
-                .addOnCompleteListener(activity) { task ->
-                    checkLogin.value = task.isSuccessful
-                }
         }
     }
 
