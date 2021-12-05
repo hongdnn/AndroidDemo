@@ -65,7 +65,7 @@ class ItemActivity : AppCompatActivity() {
         tvQuantity.text = "1"
     }
 
-    fun initView(fruit: Fruit){
+    private fun initView(fruit: Fruit){
         Glide.with(this)
             .load(fruit.image)
             .circleCrop()

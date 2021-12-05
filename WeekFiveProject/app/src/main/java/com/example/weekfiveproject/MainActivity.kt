@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.menu_item.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fruitManager = FruitManager()
-        println("w: $width")
         width = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             val windowMetrics: WindowMetrics = windowManager.currentWindowMetrics
             val insets: Insets = windowMetrics.windowInsets
@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             adapter = fruitListAdapter
         }
         fruitListAdapter.submitList(fruitManager.fruitList)
+        recyclerView.findViewHolderForAdapterPosition(1)?.itemView?.tvTitle?.text
 
     }
 

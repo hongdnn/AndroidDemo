@@ -17,15 +17,13 @@ import java.util.concurrent.Executors
 
 
 class FruitListAdapter(
-    reqWidth: Int,
+    private val reqWidth: Int,
     private val onItemClick: (Int) -> Unit
 ) : androidx.recyclerview.widget.ListAdapter<Fruit, FruitListAdapter.ViewHolder>(
     AsyncDifferConfig.Builder(UtilDiffCallBack())
         .setBackgroundThreadExecutor(Executors.newSingleThreadExecutor())
         .build()
 ) {
-
-    private val reqWidth = reqWidth
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =

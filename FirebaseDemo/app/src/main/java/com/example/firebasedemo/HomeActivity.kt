@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -28,3 +29,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 }
+
+//                val a = user.metadata?.creationTimestamp
+//                val spf = SimpleDateFormat("dd/MM/yyyy")
+//                val b = spf.format(a)

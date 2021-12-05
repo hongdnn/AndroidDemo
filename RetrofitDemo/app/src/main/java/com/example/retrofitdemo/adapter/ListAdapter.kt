@@ -9,9 +9,13 @@ import com.example.retrofitdemo.R
 import com.example.retrofitdemo.entity.Question
 import kotlinx.android.synthetic.main.question_item.view.*
 
+import com.example.testlib.MyClass
+
 class ListAdapter(
     private val mQuestions: List<Question>
 ) : RecyclerView.Adapter<ListAdapter.QuestionViewHolder>() {
+
+    lateinit var test: MyClass
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.question_item, parent, false)
